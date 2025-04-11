@@ -19,4 +19,4 @@ branding:
 
 runs:
   using: "node20"
-  main: "../../../packages/github-reporter/build/index.js"
+  main: "./build/index.js"
