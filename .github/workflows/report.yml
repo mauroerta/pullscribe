@@ -30,7 +30,7 @@ jobs:
         run: pnpm build
 
       - name: Print summary
-        uses: ./action
+        uses: ./
         with:
           report: |
             ## Pullscribe Report
