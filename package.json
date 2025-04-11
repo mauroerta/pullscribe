@@ -2,13 +2,14 @@
   "name": "pullscribe",
   "version": "0.0.1",
   "type": "module",
+  "private": false,
   "scripts": {
     "lint": "biome check src",
     "lint:fix": "biome check src --write",
     "build": "tsup src/index.ts"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./build/index.js"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
