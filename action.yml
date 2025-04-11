@@ -1,5 +1,7 @@
 name: "pullscribe"
 description: "Comments a PR with markdown or JSON"
+author: "Mauro Erta <mauro.erta@gmail.com>"
+
 inputs:
   report:
     description: "A Markdown or a JSON"
@@ -17,4 +19,4 @@ branding:
 
 runs:
   using: "node20"
-  main: "../../../packages/github-reporter/build/index.js"
+  main: "./build/index.js"

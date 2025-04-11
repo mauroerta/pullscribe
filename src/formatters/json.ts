@@ -1,41 +1,41 @@
 export function formatJsonAsMarkdown(json: FormattedJson) {
 	const entries = Object.entries(json)
 		.map(([key, value]) => {
-			return `| ${formatKey(key)} | ${formatValue(value)} |`
+			return `| ${formatKey(key)} | ${formatValue(value)} |`;
 		})
-		.join("\n")
+		.join("\n");
 
-	return `| **Key** | **Value** |\n|---|---|\n${entries}`
+	return `| **Key** | **Value** |\n|---|---|\n${entries}`;
 }
 
 function formatKey(key: string) {
-	return `**${key[0]?.toUpperCase()}${key.slice(1)}**`
+	return `**${key[0]?.toUpperCase()}${key.slice(1)}**`;
 }
 
 function formatValue(value: string | FormattedJsonValue) {
 	if (typeof value === "string") {
-		return value
+		return value;
 	}
 
 	if (value.type === "link") {
-		return `[${value.label}](${value.url})`
+		return `[${value.label}](${value.url})`;
 	}
 
-	return value.value
+	return value.value;
 }
 
 type FormattedJson = {
-	[key: string]: FormattedJsonValue
-}
+	[key: string]: FormattedJsonValue;
+};
 
 type FormattedJsonValue =
 	| string
 	| {
-			type: "string"
-			value: string
+			type: "string";
+			value: string;
 	  }
 	| {
-			type: "link"
-			label: "string"
-			url: "string"
-	  }
+			type: "link";
+			label: "string";
+			url: "string";
+	  };
