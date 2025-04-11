@@ -1,41 +1,41 @@
 import process from "node:process";
 import * as core from "@actions/core";
 import { formatAsMarkdown } from "./formatters";
-import { upsertComment } from "./utils";
+import { upsertComment } from "./upsert-comment";
 
 run()
-	.then(() => {
-		process.exit(0);
-	})
-	.catch((error) => {
-		if (error instanceof Error) {
-			core.error(error.message);
-			core.setFailed(error.message);
-		}
-		process.exit(0);
-	});
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((error) => {
+    if (error instanceof Error) {
+      core.error(error.message);
+      core.setFailed(error.message);
+    }
+    process.exit(0);
+  });
 
 async function run() {
-	const report = core.getInput("report");
-	const description = core.getInput("description", { required: false });
-	const token = core.getInput("github-token");
+  const report = core.getInput("report");
+  const description = core.getInput("description", { required: false });
+  const token = core.getInput("github-token");
 
-	core.info("Generating report...");
+  core.info("Generating report...");
 
-	const markdown = formatAsMarkdown({ description, report });
+  const markdown = formatAsMarkdown({ description, report });
 
-	core.info("✅ Report generated successfully");
+  core.info("✅ Report generated successfully");
 
-	core.info("Posting report to GitHub...");
+  core.info("Posting report to GitHub...");
 
-	await upsertComment({
-		token,
-		body: markdown,
-	});
+  await upsertComment({
+    token,
+    body: markdown,
+  });
 
-	core.notice("✅ Report posted successfully");
+  core.notice("✅ Report posted successfully");
 
-	core.summary.addRaw(markdown);
+  core.summary.addRaw(markdown);
 
-	core.notice("✅ Summary posted successfully");
+  core.notice("✅ Summary posted successfully");
 }

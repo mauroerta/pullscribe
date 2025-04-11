@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Report
-        uses: ./
+        uses: mauroerta/pullscribe@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report: |
