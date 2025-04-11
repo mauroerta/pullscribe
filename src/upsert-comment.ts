@@ -34,7 +34,7 @@ export async function upsertComment({
   const markdown = `${body}\n${MARKER}`;
 
   if (existingComment) {
-    core.info(`Updating existing comment with ID ${existingComment.id}...`);
+    core.debug(`Updating existing comment with ID ${existingComment.id}...`);
 
     return octokit.rest.issues.updateComment({
       ...context.repo,
@@ -43,7 +43,7 @@ export async function upsertComment({
     });
   }
 
-  core.info("Creating a new comment");
+  core.debug("Creating a new comment");
 
   return octokit.rest.issues.createComment({
     ...context.repo,

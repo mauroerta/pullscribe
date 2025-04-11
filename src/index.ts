@@ -20,13 +20,13 @@ async function run() {
   const description = core.getInput("description", { required: false });
   const token = core.getInput("github-token");
 
-  core.info("Generating report...");
+  core.debug("Generating report...");
 
   const markdown = formatAsMarkdown({ description, report });
 
-  core.info("✅ Report generated successfully");
+  core.debug("✅ Report generated successfully");
 
-  core.info("Posting report to GitHub...");
+  core.debug("Posting report to GitHub...");
 
   await upsertComment({
     token,
