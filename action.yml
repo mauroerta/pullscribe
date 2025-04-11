@@ -1,0 +1,20 @@
+name: "pullscribe"
+description: "Comments a PR with markdown or JSON"
+inputs:
+  report:
+    description: "A Markdown or a JSON"
+    required: true
+  github-token:
+    description: "GitHub token"
+    required: true
+  description:
+    description: "Description of the report"
+    required: false
+
+branding:
+  color: "green"
+  icon: "bookmark"
+
+runs:
+  using: "node20"
+  main: "../../../packages/github-reporter/build/index.js"
